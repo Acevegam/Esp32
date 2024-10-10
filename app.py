@@ -3,9 +3,8 @@ import requests
 
 app = Flask(__name__)
 
-# IP de la ESP32 servidora y puerto
-ESP32_SERVER_IP = ' https://d141-189-165-40-244.ngrok-free.app'  # Coloca aquí la IP local o pública de la ESP32 servidora
-ESP32_SERVER_PORT = 80
+# URL pública de Ngrok
+ESP32_SERVER_URL = 'https://d141-189-165-40-244.ngrok-free.app'  # Usa solo la URL pública de Ngrok
 
 @app.route('/', methods=['GET'])
 def index():
@@ -15,7 +14,7 @@ def index():
 def led_on():
     # Enviar solicitud al servidor ESP32 para encender el LED
     try:
-        response = requests.get(f'http://{ESP32_SERVER_IP}:{ESP32_SERVER_PORT}/ledon')
+        response = requests.get(f'{ESP32_SERVER_URL}/ledon')  # Usa la URL de Ngrok directamente
         return jsonify({'status': 'success', 'message': 'LED is ON', 'esp32_response': response.text})
     except Exception as e:
         return jsonify({'status': 'error', 'message': str(e)})
@@ -24,11 +23,10 @@ def led_on():
 def led_off():
     # Enviar solicitud al servidor ESP32 para apagar el LED
     try:
-        response = requests.get(f'http://{ESP32_SERVER_IP}:{ESP32_SERVER_PORT}/ledoff')
+        response = requests.get(f'{ESP32_SERVER_URL}/ledoff')  # Usa la URL de Ngrok directamente
         return jsonify({'status': 'success', 'message': 'LED is OFF', 'esp32_response': response.text})
     except Exception as e:
         return jsonify({'status': 'error', 'message': str(e)})
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)
-
