@@ -4,7 +4,7 @@ import requests
 app = Flask(__name__)
 
 # URL pública de Ngrok
-ESP32_SERVER_URL = 'https://d141-189-165-40-244.ngrok-free.app'  # Usa solo la URL pública de Ngrok
+ESP32_SERVER_URL = 'd141-189-165-40-244.ngrok-free.app'  # Usa solo la URL pública de Ngrok
 
 @app.route('/', methods=['GET'])
 def index():
