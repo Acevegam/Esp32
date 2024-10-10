@@ -4,7 +4,7 @@ import requests
 app = Flask(__name__)
 
 # IP de la ESP32 servidora y puerto
-ESP32_SERVER_IP = '192.168.1.100'  # Coloca aquí la IP local o pública de la ESP32 servidora
+ESP32_SERVER_IP = '192.168.1.82'  # Coloca aquí la IP local o pública de la ESP32 servidora
 ESP32_SERVER_PORT = 80
 
 @app.route('/', methods=['GET'])
